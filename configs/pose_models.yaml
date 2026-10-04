@@ -1,0 +1,48 @@
+# Pose models under test (PoseFM). Each runs at its native input size with its own reference
+# pre- and post-processing (cricketfm/models/pose/), and is scored in COCO-17.
+#
+# Sapiens is listed twice per size. The *-coco checkpoints were fine-tuned on COCO's 17
+# keypoints, the same labels ViTPose++'s COCO expert learned: that pair is the primary
+# comparison, since it differs only in the model. The *-goliath checkpoints are Sapiens' own
+# 308-keypoint head mapped to COCO-17 by name; they show what the foundation model gives without
+# a COCO fine-tune, convention gap included (pose_metrics.keypoint_bias).
+#
+# Licences: Sapiens weights are CC-BY-NC-4.0 (non-commercial). noahcao/sapiens-pose-coco is
+# gated: log in (huggingface-cli login) and accept its terms before the *-coco models load.
+
+vitpose-plus-s: {family: vitpose, checkpoint: usyd-community/vitpose-plus-small, dataset_index: 0}
+vitpose-plus-b: {family: vitpose, checkpoint: usyd-community/vitpose-plus-base, dataset_index: 0}
+vitpose-plus-l: {family: vitpose, checkpoint: usyd-community/vitpose-plus-large, dataset_index: 0}
+vitpose-plus-h: {family: vitpose, checkpoint: usyd-community/vitpose-plus-huge, dataset_index: 0}
+
+sapiens-0.3b-coco:
+  family: sapiens
+  skeleton: coco17
+  repo: noahcao/sapiens-pose-coco
+  file: sapiens_lite_host/torchscript/pose/checkpoints/sapiens_0.3b/sapiens_0.3b_coco_best_coco_AP_796_torchscript.pt2
+sapiens-0.6b-coco:
+  family: sapiens
+  skeleton: coco17
+  repo: noahcao/sapiens-pose-coco
+  file: sapiens_lite_host/torchscript/pose/checkpoints/sapiens_0.6b/sapiens_0.6b_coco_best_coco_AP_812_torchscript.pt2
+sapiens-1b-coco:
+  family: sapiens
+  skeleton: coco17
+  repo: noahcao/sapiens-pose-coco
+  file: sapiens_lite_host/torchscript/pose/checkpoints/sapiens_1b/sapiens_1b_coco_best_coco_AP_821_torchscript.pt2
+
+sapiens-0.3b-goliath:
+  family: sapiens
+  skeleton: goliath308
+  repo: facebook/sapiens-pose-0.3b-torchscript
+  file: sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2
+sapiens-0.6b-goliath:
+  family: sapiens
+  skeleton: goliath308
+  repo: facebook/sapiens-pose-0.6b-torchscript
+  file: sapiens_0.6b_goliath_best_goliath_AP_609_torchscript.pt2
+sapiens-1b-goliath:
+  family: sapiens
+  skeleton: goliath308
+  repo: facebook/sapiens-pose-1b-torchscript
+  file: sapiens_1b_goliath_best_goliath_AP_639_torchscript.pt2

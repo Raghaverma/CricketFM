@@ -1,0 +1,13 @@
+model,model_version,measurement,input_resolution,GPU,VRAM_mb,batch_size,precision,preprocessing_time_ms,inference_time_ms,postprocessing_time_ms,total_latency_ms,FPS,peak_VRAM_mb,joules_per_image,accuracy_coco_ap
+vitpose-plus-l,usyd-community/vitpose-plus-large,model,256x192,NVIDIA L4,23034,1,fp16,,19.51,,,51.26,842.9,1.121,0.8087
+vitpose-plus-l,usyd-community/vitpose-plus-large,model,256x192,NVIDIA L4,23034,2,fp16,,19.634,,,101.86,858.1,0.6685,0.8087
+vitpose-plus-l,usyd-community/vitpose-plus-large,model,256x192,NVIDIA L4,23034,4,fp16,,20.166,,,198.35,897.6,0.3636,0.8087
+vitpose-plus-l,usyd-community/vitpose-plus-large,model,256x192,NVIDIA L4,23034,8,fp16,,36.876,,,216.94,961.8,0.3308,0.8087
+vitpose-plus-l,usyd-community/vitpose-plus-large,model,256x192,NVIDIA L4,23034,16,fp16,,71.987,,,222.26,1049.1,0.3239,0.8087
+vitpose-plus-l,usyd-community/vitpose-plus-large,end_to_end,256x192,NVIDIA L4,23034,1,fp16,7.364,19.955,1.699,27.648,36.17,,,0.8087
+sapiens-0.3b-goliath,facebook/sapiens-pose-0.3b-torchscript/sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2,model,1024x768,NVIDIA L4,23034,1,fp16,,85.796,,,11.66,853.8,6.0977,0.6674
+sapiens-0.3b-goliath,facebook/sapiens-pose-0.3b-torchscript/sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2,model,1024x768,NVIDIA L4,23034,2,fp16,,180.292,,,11.09,1038.3,6.4697,0.6674
+sapiens-0.3b-goliath,facebook/sapiens-pose-0.3b-torchscript/sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2,model,1024x768,NVIDIA L4,23034,4,fp16,,372.355,,,10.74,1407.3,6.6835,0.6674
+sapiens-0.3b-goliath,facebook/sapiens-pose-0.3b-torchscript/sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2,model,1024x768,NVIDIA L4,23034,8,fp16,,759.18,,,10.54,2145.3,6.8245,0.6674
+sapiens-0.3b-goliath,facebook/sapiens-pose-0.3b-torchscript/sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2,model,1024x768,NVIDIA L4,23034,16,fp16,,1533.314,,,10.43,3621.3,6.8796,0.6674
+sapiens-0.3b-goliath,facebook/sapiens-pose-0.3b-torchscript/sapiens_0.3b_goliath_best_goliath_AP_573_torchscript.pt2,end_to_end,1024x768,NVIDIA L4,23034,1,fp16,1.249,85.009,4.678,90.777,11.02,,,0.6674

@@ -1,0 +1,8 @@
+# Timing protocol (docs/PROTOCOL.md, "Timing"); read by cricketfm/benchmark/pose_latency.py.
+warmup: 20            # calls discarded before timing (CUDA context, cuDNN algorithm search, allocator growth)
+iters: 100            # timed calls per cell per round
+rounds: 2             # every model x batch cell is measured once per round; rounds interleave models
+batch_sizes: [1, 2, 4, 8, 16]
+precision: fp16       # both families; fp16 keypoints are within 0.4 px of fp32 for each (coco_check smoke)
+e2e_frames: 50        # frames for the end-to-end (preprocess + forward + decode) measurement
+cudnn_benchmark: false

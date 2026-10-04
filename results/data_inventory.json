@@ -1,0 +1,97 @@
+{
+  "source": "AutoClipping job videos",
+  "created_utc": "2026-10-04T09:45:20+00:00",
+  "videos": 157,
+  "unreadable": 6,
+  "duplicate_uploads": 33,
+  "by_mode": {
+    "batsman": {
+      "videos": 62,
+      "analysis_types": {
+        "STANCE_ANALYSIS": 62
+      },
+      "players": 10,
+      "videos_per_player": [
+        20,
+        8,
+        8,
+        7,
+        5,
+        4,
+        4,
+        3,
+        2,
+        1
+      ],
+      "duration_s_total": 1138.1,
+      "duration_s_min_median_max": [
+        1.333,
+        13.547,
+        59.99
+      ],
+      "vfr_videos": 35,
+      "resolutions": {
+        "1280x720": 46,
+        "1920x1080": 15,
+        "1080x1920": 1
+      },
+      "fps_nominal": {
+        "60.0": 35,
+        "30.0": 12,
+        "29.97": 8,
+        "30.02": 6,
+        "29.917": 1
+      }
+    },
+    "bowler": {
+      "videos": 56,
+      "analysis_types": {
+        "BOWLING_ANALYSIS": 33,
+        "BOWLING_SPEED": 18,
+        "AUTO_CLIPPING": 5
+      },
+      "players": 13,
+      "videos_per_player": [
+        21,
+        11,
+        7,
+        5,
+        4,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "duration_s_total": 5817.9,
+      "duration_s_min_median_max": [
+        2.407,
+        8.889,
+        693.573
+      ],
+      "vfr_videos": 20,
+      "resolutions": {
+        "1920x1080": 24,
+        "1280x720": 23,
+        "720x1280": 4,
+        "3840x1728": 3,
+        "1180x2556": 1,
+        "3840x2160": 1
+      },
+      "fps_nominal": {
+        "60.0": 24,
+        "30.0": 16,
+        "29.917": 4,
+        "30.02": 4,
+        "90000.0": 3,
+        "29.833": 3,
+        "120.0": 1,
+        "50.0": 1
+      }
+    }
+  },
+  "players_in_both_modes": 7
+}

@@ -1,0 +1,368 @@
+{
+  "model": {
+    "name": "vitpose-plus-l",
+    "family": "vitpose",
+    "input_hw": [
+      256,
+      192
+    ],
+    "native_skeleton": "coco-17",
+    "dtype": "float16",
+    "device": "cuda",
+    "checkpoint": "usyd-community/vitpose-plus-large",
+    "dataset_index": 0,
+    "params": 434404625,
+    "processing": "HF VitPoseImageProcessor crop (padding 1.25) + HF DARK decode, no flip test"
+  },
+  "set": {
+    "annotations": "/home/ubuntu/TensorRT/datasets/coco/annotations/person_keypoints_val2017.json",
+    "images": 2346,
+    "persons": 6352,
+    "limited_to_first_images": null
+  },
+  "protocol": {
+    "boxes": "ground truth",
+    "flip_test": false,
+    "person_score": "mean joint score over joints > 0.2",
+    "ap": "pycocotools keypoints, all area ranges, evaluated images only",
+    "intervals": "1000 resamples of images"
+  },
+  "coco_ap": {
+    "AP": 0.8086602111611315,
+    "AP50": 0.9441188827625054,
+    "AP75": 0.8772587753458229,
+    "AP_M": 0.7824721954174625,
+    "AP_L": 0.8517866450656082,
+    "AR": 0.8378778337531486,
+    "AR50": 0.9595403022670025,
+    "AR75": 0.8981423173803527,
+    "AR_M": 0.8075935536738597,
+    "AR_L": 0.8856187290969901
+  },
+  "pck@0.1_bbox_by_keypoint": {
+    "nose": 0.9885192127460168,
+    "left_eye": 0.9870375371320551,
+    "right_eye": 0.9877883310719131,
+    "left_ear": 0.9855572998430141,
+    "right_ear": 0.984029484029484,
+    "left_shoulder": 0.9638247591347028,
+    "right_shoulder": 0.9670609645131938,
+    "left_elbow": 0.9628690036900369,
+    "right_elbow": 0.9597989949748744,
+    "left_wrist": 0.9553865652724969,
+    "right_wrist": 0.9568793619142573,
+    "left_hip": 0.9188222923238696,
+    "right_hip": 0.9243311036789298,
+    "left_knee": 0.9442072302875035,
+    "right_knee": 0.9474285714285714,
+    "left_ankle": 0.9428474805546162,
+    "right_ankle": 0.9394969408565602
+  },
+  "checks": {
+    "every_keypoint_pck@0.1_at_least": 0.5,
+    "keypoints_below": [],
+    "reproduction": {
+      "reference_ap": 0.809,
+      "ap": 0.8086602111611315,
+      "tolerance": 0.005
+    },
+    "passed": true
+  },
+  "persons": 6352,
+  "joints_labeled": 68215,
+  "joints_occluded": 8365,
+  "metrics": {
+    "AP": {
+      "value": 0.8017660450886916,
+      "ci": [
+        0.7931511817007387,
+        0.8123481217752858
+      ]
+    },
+    "AP50": {
+      "value": 0.9428243788511796,
+      "ci": [
+        0.9408205599928255,
+        0.9543147451374583
+      ]
+    },
+    "AP75": {
+      "value": 0.8733802763368759,
+      "ci": [
+        0.8620673629170523,
+        0.8858264180438638
+      ]
+    },
+    "mean_oks": {
+      "value": 0.8828071776117508,
+      "ci": [
+        0.8778214076291518,
+        0.8879344704901667
+      ]
+    },
+    "pck_bbox@0.05": {
+      "value": 0.8854504141317892,
+      "ci": [
+        0.8799790126945108,
+        0.890550962799912
+      ]
+    },
+    "pck_bbox@0.1": {
+      "value": 0.9592318405042879,
+      "ci": [
+        0.9555391132984681,
+        0.962597461967252
+      ]
+    },
+    "pck_torso@0.2": {
+      "value": 0.9593543679817771,
+      "ci": [
+        0.9555246645924645,
+        0.9629463656441175
+      ]
+    },
+    "pck_head": {
+      "value": 0.9773443112118031,
+      "ci": [
+        0.9733251997964693,
+        0.9812728261656376
+      ]
+    },
+    "pck_torso": {
+      "value": 0.8103238373508643,
+      "ci": [
+        0.8016110773149141,
+        0.8193476352891417
+      ]
+    },
+    "pck_arms": {
+      "value": 0.8899286185591746,
+      "ci": [
+        0.8824770300270505,
+        0.8970050111693126
+      ]
+    },
+    "pck_legs": {
+      "value": 0.8703531598513011,
+      "ci": [
+        0.8608140848053736,
+        0.8792036970891465
+      ]
+    },
+    "pck_visible": {
+      "value": 0.921704260651629,
+      "ci": [
+        0.9178511743362507,
+        0.9254827316634824
+      ]
+    },
+    "pck_occluded": {
+      "value": 0.6260609683203825,
+      "ci": [
+        0.6094078447955341,
+        0.6425214468051407
+      ]
+    },
+    "angle_mae_deg": {
+      "value": 6.963516410536605,
+      "ci": [
+        6.757508684767563,
+        7.19067447694164
+      ]
+    }
+  },
+  "per_keypoint": {
+    "nose": {
+      "pck": 0.9812558575445174,
+      "labeled": 4268,
+      "bias_box_units": [
+        0.00033,
+        0.00017
+      ],
+      "error_box_units": 0.013101123013138101
+    },
+    "left_eye": {
+      "pck": 0.9819065622468269,
+      "labeled": 3703,
+      "bias_box_units": [
+        0.00046,
+        0.00016
+      ],
+      "error_box_units": 0.012407956572220569
+    },
+    "right_eye": {
+      "pck": 0.9831750339213026,
+      "labeled": 3685,
+      "bias_box_units": [
+        0.00019,
+        0.00075
+      ],
+      "error_box_units": 0.012248227378844716
+    },
+    "left_ear": {
+      "pck": 0.9686028257456829,
+      "labeled": 3185,
+      "bias_box_units": [
+        -0.00036,
+        0.00133
+      ],
+      "error_box_units": 0.015983781959273847
+    },
+    "right_ear": {
+      "pck": 0.9689803439803439,
+      "labeled": 3256,
+      "bias_box_units": [
+        -0.00029,
+        0.00102
+      ],
+      "error_box_units": 0.017475092536372076
+    },
+    "left_shoulder": {
+      "pck": 0.8807489547355026,
+      "labeled": 5501,
+      "bias_box_units": [
+        0.00139,
+        -0.00085
+      ],
+      "error_box_units": 0.030948427335089315
+    },
+    "right_shoulder": {
+      "pck": 0.8787989080982711,
+      "labeled": 5495,
+      "bias_box_units": [
+        0.00262,
+        -0.00145
+      ],
+      "error_box_units": 0.031464845958619175
+    },
+    "left_elbow": {
+      "pck": 0.8886070110701108,
+      "labeled": 4336,
+      "bias_box_units": [
+        -0.00039,
+        -0.00167
+      ],
+      "error_box_units": 0.02876393138111447
+    },
+    "right_elbow": {
+      "pck": 0.8823663773412517,
+      "labeled": 4378,
+      "bias_box_units": [
+        0.00054,
+        -0.00029
+      ],
+      "error_box_units": 0.030280346151599066
+    },
+    "left_wrist": {
+      "pck": 0.8915082382762991,
+      "labeled": 3945,
+      "bias_box_units": [
+        -0.00195,
+        -0.00037
+      ],
+      "error_box_units": 0.030276028277214456
+    },
+    "right_wrist": {
+      "pck": 0.8980558325024925,
+      "labeled": 4012,
+      "bias_box_units": [
+        -0.0004,
+        0.00031
+      ],
+      "error_box_units": 0.0301965932953816
+    },
+    "left_hip": {
+      "pck": 0.7339642481598317,
+      "labeled": 4755,
+      "bias_box_units": [
+        -0.00042,
+        -0.00178
+      ],
+      "error_box_units": 0.045059476372779995
+    },
+    "right_hip": {
+      "pck": 0.7265886287625418,
+      "labeled": 4784,
+      "bias_box_units": [
+        -0.0003,
+        -0.00094
+      ],
+      "error_box_units": 0.04560491986192308
+    },
+    "left_knee": {
+      "pck": 0.8687731283803017,
+      "labeled": 3513,
+      "bias_box_units": [
+        0.00076,
+        -0.00064
+      ],
+      "error_box_units": 0.032833593189106704
+    },
+    "right_knee": {
+      "pck": 0.8751428571428571,
+      "labeled": 3500,
+      "bias_box_units": [
+        -0.00053,
+        0.00074
+      ],
+      "error_box_units": 0.03173230972949603
+    },
+    "left_ankle": {
+      "pck": 0.8691241122759553,
+      "labeled": 2957,
+      "bias_box_units": [
+        -0.00123,
+        -0.00261
+      ],
+      "error_box_units": 0.03445184528994492
+    },
+    "right_ankle": {
+      "pck": 0.8677770224337186,
+      "labeled": 2942,
+      "bias_box_units": [
+        -0.00158,
+        -0.00422
+      ],
+      "error_box_units": 0.03521832396063147
+    }
+  },
+  "angle_mae_deg": {
+    "left_elbow": 9.014150824991015,
+    "right_elbow": 8.620055405201953,
+    "left_knee": 6.682564842133522,
+    "right_knee": 7.059758078952138,
+    "left_shoulder": 5.190043979130197,
+    "right_shoulder": 5.288820927966557
+  },
+  "clusters": {
+    "clusters": 2346,
+    "instances": 6352,
+    "cluster_size_min": 1,
+    "cluster_size_median": 2.0,
+    "cluster_size_max": 13
+  },
+  "wall_seconds": 92.5,
+  "environment": {
+    "created_utc": "2026-10-04T09:55:20+00:00",
+    "git_commit": "not a git repo",
+    "python": "3.12.3",
+    "torch": "2.14.0+cu130",
+    "torch_cuda": "13.0",
+    "cudnn": 92400,
+    "cudnn_benchmark": false,
+    "transformers": "5.17.0",
+    "numpy": "2.5.3",
+    "cpu": "AMD EPYC 7R13 Processor",
+    "cpu_count": 16,
+    "gpu_name": "NVIDIA L4",
+    "gpu_memory_mb": 23034,
+    "nvidia_driver": "595.91.07",
+    "power_limit_w": 72.0,
+    "sm_clock_mhz_at_start": 2040,
+    "sm_clock_max_mhz": 2040,
+    "foreign_gpu_processes_at_start": {
+      "1025": 1180,
+      "1145": 1180
+    }
+  }
+}

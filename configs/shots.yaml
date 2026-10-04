@@ -1,0 +1,110 @@
+# Cricket shot taxonomy: the one source of truth for annotators (docs/ANNOTATION.md) and for the
+# VLM prompt (cricketfm/models/vlm/prompts.py builds it from this file, so a model sees exactly
+# the definitions the annotators used).
+#
+# Annotators always label the FINE stroke. The classes a benchmark evaluates are a versioned
+# mapping over fine labels, so changing the class set never means re-annotating.
+#
+# A clip's label is the stroke the batter ATTEMPTED, whether or not bat met ball: a cover drive
+# played and missed is a cover_drive. Directions are relative to the batter, not the camera:
+# off side and leg side swap with handedness.
+
+fine:
+  cover_drive: >-
+    a drive (vertical bat, full swing and follow-through) to a ball outside off stump, hit
+    through the covers on the off side, between point and mid-off; usually off the front foot
+  straight_drive: >-
+    a vertical-bat drive hit straight back past the bowler, between mid-off and mid-on
+  square_drive: >-
+    a vertical-bat drive hit square of the wicket on the off side, through point
+  on_drive: >-
+    a vertical-bat drive off the front foot hit through the leg side, between mid-on and
+    midwicket
+  flick: >-
+    a wristy leg-side shot off the pads (clip or glance) with a vertical bat, the face turned
+    toward midwicket, square leg or fine leg
+  pull: >-
+    a horizontal-bat shot to a short ball at about waist-to-chest height, usually off the back
+    foot, hit to the leg side
+  hook: >-
+    a horizontal-bat shot to a short ball at or above shoulder height, hit to the leg side
+    behind square
+  cut: >-
+    a horizontal-bat shot to a short, wide ball outside off stump, hit square or behind square
+    on the off side (square cut, late cut)
+  sweep: >-
+    a horizontal-bat shot played from a deep crouch, usually with the back knee down, sweeping
+    the ball to the leg side square or behind (includes paddle and slog sweeps)
+  reverse_sweep: >-
+    a sweep with the swing reversed, hitting the ball to the off side
+  defensive: >-
+    a block with little or no backswing or follow-through: forward or back defence, bat angled
+    down to stop the ball
+  other_stroke: >-
+    any stroke not listed above (e.g. upper cut, ramp or scoop, switch hit, cross-bat slog)
+  leave: >-
+    no stroke: the batter withdraws or raises the bat to let the ball pass
+  no_shot: >-
+    neither a stroke nor a leave: the batter ducks or sways out of the way, or the ball hits
+    the pad with no stroke offered
+
+# Annotated (so the count is known) but kept out of every split.
+excluded:
+  unclear: the stroke can't be judged from the footage (occluded, out of frame, cut off)
+
+# Phrases a model might answer with instead of a label, mapped to fine labels. Used only to
+# read model output (models/vlm/parsing.py), never shown to annotators. Single words here are
+# matched only as a JSON "shot" value, never in free text, where they occur with other meanings.
+synonyms:
+  square cut: cut
+  late cut: cut
+  glance: flick
+  leg glance: flick
+  clip off the pads: flick
+  forward defence: defensive
+  forward defense: defensive
+  back foot defence: defensive
+  back foot defense: defensive
+  backfoot defence: defensive
+  defence: defensive
+  defense: defensive
+  defensive shot: defensive
+  defensive block: defensive
+  block: defensive
+  slog sweep: sweep
+  paddle sweep: sweep
+  upper cut: other_stroke
+  ramp: other_stroke
+  scoop: other_stroke
+  switch hit: other_stroke
+  slog: other_stroke
+  duck: no_shot
+
+taxonomies:
+  v1:
+    classes: [cover_drive, straight_drive, pull, cut, flick, sweep, defensive, other]
+    # Fine labels not named here map to the class of the same name.
+    map:
+      square_drive: other
+      on_drive: other
+      hook: other            # not pull: a distinct stroke, kept apart from pull at labeling and in evaluation (PROTOCOL §8.4)
+      reverse_sweep: other
+      other_stroke: other
+      leave: other
+      no_shot: other
+    # Classes that aren't fine labels need their own description.
+    descriptions:
+      other: >-
+        any other stroke or no stroke at all, including square drive, on drive, hook, reverse
+        sweep, upper cut, ramp, switch hit, slog, a leave, or ducking out of the way
+    # The failure analysis's "similar stroke geometry" error (docs/PROTOCOL.md §4.4) is a confusion
+    # between two classes of the same bat plane. Fixed here before any error is seen. `other`
+    # holds both planes and has none.
+    bat_plane:
+      cover_drive: vertical
+      straight_drive: vertical
+      flick: vertical
+      defensive: vertical
+      pull: horizontal
+      cut: horizontal
+      sweep: horizontal

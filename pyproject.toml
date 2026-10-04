@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cricketfm"
+version = "0.1.0"
+description = "Benchmarking foundation models and specialist vision systems for cricket understanding."
+requires-python = ">=3.12"
+dependencies = [
+    "numpy>=1.26",
+    "scipy>=1.11",
+    "opencv-python-headless>=4.10",
+    "pyyaml>=6.0",
+    "pillow>=10.0",
+    "pycocotools>=2.0.7",     # COCO's own OKS/AP evaluation: the reference the fast metrics are tested against
+    "nvidia-ml-py>=12.0",     # NVML: utilization, clocks, power, foreign GPU processes (benchmark/gpu_guard.py)
+    "psutil>=5.9",
+    "matplotlib>=3.8",
+    "torch>=2.4",
+    "torchvision>=0.19",      # transformers' default VitPoseImageProcessor backend (else a PIL fallback with other numerics)
+    "transformers>=4.48",     # VitPoseForPoseEstimation (ViTPose++ with its MoE experts)
+    "safetensors>=0.4",
+    "huggingface_hub>=0.24",
+]
+
+[project.optional-dependencies]
+vlm = ["peft>=0.13", "accelerate>=1.0"]     # Phases 5-6: zero-shot VLM + LoRA
+dev = ["pytest>=8.0"]
+
+[tool.setuptools.packages.find]
+include = ["cricketfm*"]
+
+[tool.setuptools.package-data]
+cricketfm = ["models/pose/goliath308.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-ra -m 'not gpu'"
+markers = ["gpu: needs CUDA and model weights; run explicitly with -m gpu"]
+filterwarnings = ["ignore::DeprecationWarning"]

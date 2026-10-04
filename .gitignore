@@ -1,0 +1,19 @@
+# Private footage, frames and labels stay local; only data/README.md is committed.
+data/*
+!data/README.md
+
+# Weights and per-frame outputs. Aggregates in results/*.json are committed.
+checkpoints/
+results/raw/
+*.safetensors
+*.pt
+*.pt2
+*.engine
+*.onnx
+
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
